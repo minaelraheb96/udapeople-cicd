@@ -237,9 +237,9 @@ jobs:
       - image: cimg/node:13.8.0
     steps:
       - checkout
-      - install_awscli
       - restore_cache:
           keys: [backend-deps]
+      - install_awscli
       - run:
           name: Run migrations
           command: |
@@ -248,7 +248,6 @@ jobs:
             npm audit fix --force --audit-level=critical
             npm audit fix --force --audit-level=critical
             npm audit --audit-level=critical
-#            npm audit fix
             npm run migrations > migrations_dump.txt
       - run:
           name: Send migration status to kvdb.io
