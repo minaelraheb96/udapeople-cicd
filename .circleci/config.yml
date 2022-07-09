@@ -238,7 +238,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-deps]
+          keys: [backend-deps]
       - install_awscli
       - run:
           name: Run migrations
