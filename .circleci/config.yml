@@ -17,7 +17,7 @@ commands:
             echo TYPEORM_USERNAME=$TYPEORM_USERNAME >> "./backend/.env"
             echo TYPEORM_PASSWORD=$TYPEORM_PASSWORD >> "./backend/.env"
             echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> "./backend/.env"
-            
+
   install_awscli:
     description: Install AWS CLI v2
     steps:
@@ -255,6 +255,11 @@ jobs:
     steps:
       - checkout
       - install_awscli
+      - restore_cache:
+          keys: [backend-deps]
+      - attach_workspace:
+          at: .
+      - create-dotenv-file
       - run:
           name: Run migrations
           command: |
