@@ -183,6 +183,7 @@ jobs:
       - run:
           name: Ensure front-end infrastructure exist
           command: |
+            pwd
             aws cloudformation deploy \
               --template-file .circleci/files/frontend.yml \
               --tags project=udapeople \
