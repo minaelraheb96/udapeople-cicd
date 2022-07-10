@@ -230,6 +230,8 @@ jobs:
       - image: cimg/node:13.8.0
     steps:
       - checkout
+      - restore_cache:
+          keys: [backend-deps]
       - install_awscli
       - run:
           name: Run migrations
