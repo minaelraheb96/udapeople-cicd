@@ -1,3 +1,8 @@
 vawP3qGrDB9v1iHWF6ED
 
 
+cd .circleci/files
+aws cloudformation deploy \
+         --template-file cloudfront.yml \
+         --stack-name InitialStack\
+         --parameter-overrides WorkflowID=ekwsfuctph
